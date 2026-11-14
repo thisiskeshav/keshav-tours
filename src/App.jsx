@@ -22,6 +22,7 @@ export default function App() {
   const [selectedState, setSelectedState] = useState('All');
   const [selectedDuration, setSelectedDuration] = useState('All');
   const [selectedCategory, setSelectedCategory] = useState('All');
+  const [selectedPriceRange, setSelectedPriceRange] = useState('All');
   
   // Modal States
   const [activePackageModal, setActivePackageModal] = useState(null);
@@ -60,6 +61,7 @@ export default function App() {
     setSelectedState('All');
     setSelectedDuration('All');
     setSelectedCategory('All');
+    setSelectedPriceRange('All');
   };
 
   const handleExploreTours = () => {
@@ -120,6 +122,8 @@ export default function App() {
           setSelectedDuration={setSelectedDuration}
           selectedCategory={selectedCategory}
           setSelectedCategory={setSelectedCategory}
+          selectedPriceRange={selectedPriceRange}
+          setSelectedPriceRange={setSelectedPriceRange}
           onResetFilters={handleResetFilters}
           totalPackagesCount={packagesData.length}
         />
@@ -147,6 +151,8 @@ export default function App() {
           stateFilter={selectedState}
           durationFilter={selectedDuration}
           categoryFilter={selectedCategory}
+          priceFilter={selectedPriceRange}
+          onPriceFilterChange={setSelectedPriceRange}
         />
 
         {/* Interactive Trip Planner & Cost Calculator */}

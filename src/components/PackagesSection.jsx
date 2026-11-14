@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Star, Clock, MapPin, Check, Sparkles, ArrowRight, Eye, Calendar, Tag, ShieldCheck } from 'lucide-react';
+import { Star, Clock, MapPin, Check, Sparkles, ArrowRight, Eye, Calendar, Tag, ShieldCheck, IndianRupee, SlidersHorizontal } from 'lucide-react';
 import { packagesData, handleImageError } from '../data/travelData';
 
 export default function PackagesSection({ 
@@ -7,11 +7,13 @@ export default function PackagesSection({
   onBookPackage, 
   stateFilter, 
   durationFilter, 
-  categoryFilter 
+  categoryFilter,
+  priceFilter = 'All',
+  onPriceFilterChange
 }) {
   const [activeCategoryTab, setActiveCategoryTab] = useState('All');
 
-  // Filter packages based on activeCategoryTab and props filters
+  // Filter packages based on activeCategoryTab, priceFilter, and props filters
   const filteredPackages = packagesData.filter(pkg => {
     // Category tab filter
     if (activeCategoryTab !== 'All') {
@@ -36,6 +38,13 @@ export default function PackagesSection({
       if (durationFilter === 'Long' && days < 8) return false;
     }
 
+    // Price range filter
+    if (priceFilter && priceFilter !== 'All') {
+      if (priceFilter === 'under-6000' && pkg.price >= 6000) return false;
+      if (priceFilter === '6000-8000' && (pkg.price < 6000 || pkg.price > 8000)) return false;
+      if (priceFilter === '8000-10000' && (pkg.price < 8000 || pkg.price > 10000)) return false;
+    }
+
     return true;
   });
 
@@ -44,7 +53,7 @@ export default function PackagesSection({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
+        <div className="text-center max-w-3xl mx-auto mb-10">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-100 text-sky-800 text-xs font-bold uppercase tracking-widest mb-3">
             <Sparkles className="w-3.5 h-3.5 text-amber-500" />
             CURATED MOUNTAIN ITINERARIES
@@ -56,7 +65,7 @@ export default function PackagesSection({
             All-inclusive packages with private sanitised cabs, hand-picked hotels, delicious meals, and 24/7 mountain assistance.
           </p>
 
-          {/* Interactive Filter Pills */}
+          {/* Interactive Region & Category Filter Pills */}
           <div className="mt-8 flex flex-wrap justify-center items-center gap-2">
             {[
               { id: 'All', label: 'All Packages' },
@@ -79,6 +88,36 @@ export default function PackagesSection({
               </button>
             ))}
           </div>
+
+          {/* Dedicated Price Range Filter Tabs */}
+          <div className="mt-4 p-3 bg-white/80 backdrop-blur-sm rounded-2xl border border-slate-200 shadow-sm max-w-2xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
+            <div className="flex items-center gap-1.5 text-xs font-bold text-slate-700 uppercase tracking-wider shrink-0">
+              <IndianRupee className="w-4 h-4 text-emerald-600" />
+              <span>Budget Filter:</span>
+            </div>
+
+            <div className="flex flex-wrap items-center justify-center gap-1.5 w-full sm:w-auto">
+              {[
+                { id: 'All', label: 'All Budgets (≤₹10k)' },
+                { id: 'under-6000', label: 'Under ₹6,000' },
+                { id: '6000-8000', label: '₹6k - ₹8k' },
+                { id: '8000-10000', label: '₹8k - ₹10k' }
+              ].map(pTab => (
+                <button
+                  key={pTab.id}
+                  onClick={() => onPriceFilterChange && onPriceFilterChange(pTab.id)}
+                  className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                    priceFilter === pTab.id
+                      ? 'bg-emerald-600 text-white shadow-md shadow-emerald-600/20 scale-105'
+                      : 'bg-slate-50 text-slate-600 hover:bg-slate-100 hover:text-slate-900 border border-slate-200'
+                  }`}
+                >
+                  {pTab.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
         </div>
 
         {/* Packages Grid */}
@@ -205,10 +244,13 @@ export default function PackagesSection({
               Try adjusting your filter options or contact us directly for a customized itinerary.
             </p>
             <button
-              onClick={() => setActiveCategoryTab('All')}
-              className="px-5 py-2 rounded-full bg-sky-500 text-white text-xs font-semibold shadow"
+              onClick={() => {
+                setActiveCategoryTab('All');
+                if (onPriceFilterChange) onPriceFilterChange('All');
+              }}
+              className="px-5 py-2 rounded-full bg-sky-500 hover:bg-sky-600 text-white text-xs font-semibold shadow transition-all"
             >
-              Reset Filters
+              Reset All Filters
             </button>
           </div>
         )}
