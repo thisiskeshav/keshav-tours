@@ -65,10 +65,6 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenBooking
               <MapPin className="w-3 h-3 text-amber-400" />
               Offices: Shimla &bull; Srinagar &bull; Delhi
             </span>
-            <div className="flex items-center gap-1 bg-slate-800/80 px-2.5 py-0.5 rounded-full border border-slate-700 text-sky-300 font-medium">
-              <span className="text-sm">🇮🇳</span>
-              <span>INR (₹)</span>
-            </div>
           </div>
         </div>
       </div>

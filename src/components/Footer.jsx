@@ -60,7 +60,7 @@ export default function Footer({ onNavigate, onOpenBooking, onFilterByState }) {
                 Govt. Registered Operator
               </span>
               <span className="px-3 py-1 rounded-full bg-slate-800 text-slate-300 border border-slate-700 text-[11px] font-medium flex items-center gap-1.5">
-                <span className="text-xs">🇮🇳</span>
+                <MapPin className="w-3.5 h-3.5 text-amber-400" />
                 Serving Across India
               </span>
             </div>
