@@ -73,3 +73,56 @@ input::placeholder, textarea::placeholder {
   animation: pulse-subtle 3s ease-in-out infinite;
 }
 
+/* Print Optimization for Single-Page Voucher */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 10mm;
+  }
+
+  /* Hide background elements, navigation, headers, footers */
+  header, nav, footer, main, .no-print, [data-no-print="true"] {
+    display: none !important;
+  }
+
+  /* Hide modal backdrop and make it clean white */
+  .fixed.inset-0 {
+    position: static !important;
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+  }
+
+  .fixed.inset-0 > div {
+    box-shadow: none !important;
+    border: none !important;
+    max-width: 100% !important;
+    max-height: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+  }
+
+  /* Hide modal header, success alert, and buttons when printing directly */
+  .modal-print-header,
+  .modal-print-success,
+  .modal-print-actions {
+    display: none !important;
+  }
+
+  /* Ensure the voucher fits on a single page */
+  #printable-voucher {
+    display: block !important;
+    border: 2px dashed #0284c7 !important;
+    border-radius: 12px !important;
+    padding: 20px !important;
+    margin: 0 auto !important;
+    background: #ffffff !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
+

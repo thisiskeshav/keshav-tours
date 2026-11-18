@@ -96,11 +96,277 @@ export default function BookingModal({ initialPackage, onClose }) {
       `*25% Confirmation Advance:* ₹${bookingVoucher.advanceToken.toLocaleString('en-IN')}\n\n` +
       `Please verify and send me the official hotel & cab confirmation voucher!`
     );
-    window.open(`https://wa.me/919816012345?text=${msg}`, '_blank');
+    const cleanPhone = companyInfo.phone.replace(/[^0-9]/g, '');
+    window.open(`https://wa.me/${cleanPhone}?text=${msg}`, '_blank');
   };
 
   const handlePrint = () => {
-    window.print();
+    if (!bookingVoucher) {
+      window.print();
+      return;
+    }
+
+    const printWindow = window.open('', '_blank', 'width=800,height=900');
+    if (!printWindow) {
+      window.print();
+      return;
+    }
+
+    const printHtml = `
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <title>Reservation Voucher - ${bookingVoucher.bookingId} - Keshav Tours</title>
+        <meta charset="utf-8" />
+        <style>
+          @page {
+            size: A4 portrait;
+            margin: 12mm;
+          }
+          * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+          }
+          body {
+            background: #ffffff;
+            color: #0f172a;
+            padding: 10px;
+            font-size: 13px;
+            line-height: 1.5;
+          }
+          .voucher-container {
+            border: 2px dashed #0284c7;
+            border-radius: 16px;
+            padding: 24px;
+            max-width: 700px;
+            margin: 0 auto;
+            background: #ffffff;
+          }
+          .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 14px;
+            margin-bottom: 16px;
+          }
+          .brand-title {
+            font-size: 22px;
+            font-weight: 900;
+            color: #0c1a30;
+          }
+          .brand-title span {
+            color: #0284c7;
+          }
+          .brand-subtitle {
+            font-size: 11px;
+            color: #64748b;
+            margin-top: 2px;
+            font-weight: 500;
+          }
+          .ref-badge {
+            background: #f0f9ff;
+            border: 1px solid #bae6fd;
+            border-radius: 8px;
+            padding: 6px 12px;
+            text-align: right;
+          }
+          .ref-label {
+            font-size: 9px;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: #0284c7;
+            letter-spacing: 0.5px;
+          }
+          .ref-number {
+            font-size: 16px;
+            font-weight: 800;
+            color: #0369a1;
+          }
+          .grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 16px;
+            background: #f8fafc;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+          }
+          .field-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            color: #64748b;
+            font-weight: 600;
+            margin-bottom: 2px;
+          }
+          .field-value {
+            font-size: 13px;
+            font-weight: 700;
+            color: #0f172a;
+          }
+          .package-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 14px;
+            margin-bottom: 16px;
+          }
+          .package-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 8px;
+            margin-bottom: 10px;
+          }
+          .package-name {
+            font-size: 15px;
+            font-weight: 800;
+            color: #0f172a;
+          }
+          .package-duration {
+            background: #e0f2fe;
+            color: #0369a1;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 12px;
+          }
+          .package-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            font-size: 12px;
+            color: #334155;
+          }
+          .financials {
+            background: #0f172a;
+            color: #ffffff;
+            border-radius: 10px;
+            padding: 14px 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+          }
+          .financials-label {
+            font-size: 11px;
+            color: #94a3b8;
+          }
+          .financials-total {
+            font-size: 20px;
+            font-weight: 900;
+            color: #fbbf24;
+          }
+          .financials-token {
+            font-size: 16px;
+            font-weight: 800;
+            color: #34d399;
+          }
+          .note {
+            font-size: 11px;
+            color: #475569;
+            background: #f8fafc;
+            border-left: 3px solid #0284c7;
+            padding: 8px 12px;
+            border-radius: 4px;
+            margin-bottom: 14px;
+            line-height: 1.4;
+          }
+          .footer-contacts {
+            border-top: 1px solid #e2e8f0;
+            padding-top: 12px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 10px;
+            color: #64748b;
+          }
+        </style>
+      </head>
+      <body>
+        <div class="voucher-container">
+          <div class="header">
+            <div>
+              <div class="brand-title">Keshav <span>Tours</span> &amp; Travels</div>
+              <div class="brand-subtitle">Govt. Approved Himalayan Tour Operator &bull; Shimla &bull; Srinagar &bull; New Delhi</div>
+            </div>
+            <div class="ref-badge">
+              <div class="ref-label">Booking Reference</div>
+              <div class="ref-number">${bookingVoucher.bookingId}</div>
+            </div>
+          </div>
+
+          <div class="grid">
+            <div>
+              <div class="field-label">Guest Name</div>
+              <div class="field-value">${bookingVoucher.name}</div>
+            </div>
+            <div>
+              <div class="field-label">WhatsApp Contact</div>
+              <div class="field-value">${bookingVoucher.phone}</div>
+            </div>
+            <div>
+              <div class="field-label">Travel Date</div>
+              <div class="field-value">${bookingVoucher.date}</div>
+            </div>
+            <div>
+              <div class="field-label">Travelers</div>
+              <div class="field-value">${bookingVoucher.adults} Adults ${bookingVoucher.children > 0 ? `, ${bookingVoucher.children} Kids` : ''}</div>
+            </div>
+          </div>
+
+          <div class="package-card">
+            <div class="package-header">
+              <div class="package-name">${bookingVoucher.packageTitle}</div>
+              <div class="package-duration">${bookingVoucher.duration}</div>
+            </div>
+            <div class="package-details">
+              <div><strong>Dedicated Cab:</strong> ${bookingVoucher.vehicle}</div>
+              <div><strong>Meal Preference:</strong> ${bookingVoucher.mealPlan}</div>
+              <div><strong>Pickup Point:</strong> ${bookingVoucher.city}</div>
+              <div><strong>Trip Coordinator:</strong> 24/7 Dedicated Ground Support</div>
+            </div>
+            ${bookingVoucher.specialNotes ? `<div style="margin-top: 6px; font-size: 11px; color: #64748b;"><strong>Notes:</strong> ${bookingVoucher.specialNotes}</div>` : ''}
+          </div>
+
+          <div class="financials">
+            <div>
+              <div class="financials-label">Total Estimated Package Cost:</div>
+              <div class="financials-total">₹${bookingVoucher.totalCost.toLocaleString('en-IN')}</div>
+            </div>
+            <div style="text-align: right;">
+              <div class="financials-label">Confirmation Token (25%):</div>
+              <div class="financials-token">₹${bookingVoucher.advanceToken.toLocaleString('en-IN')}</div>
+            </div>
+          </div>
+
+          <div class="note">
+            * <strong>Official Confirmation Notice:</strong> Your booking has been registered in our database. Our reservations team will reach out via WhatsApp at <strong>+91 ${companyInfo.phone}</strong> within 15 minutes to confirm hotel room inventory, driver details, and send the advance payment receipt.
+          </div>
+
+          <div class="footer-contacts">
+            <div><strong>Helpline:</strong> ${companyInfo.phone} | <strong>Email:</strong> ${companyInfo.email}</div>
+            <div><strong>Registered Operator:</strong> Keshav Tours &amp; Travels &copy; ${new Date().getFullYear()}</div>
+          </div>
+        </div>
+
+        <script>
+          window.onload = function() {
+            window.print();
+          };
+        </script>
+      </body>
+      </html>
+    `;
+
+    printWindow.document.open();
+    printWindow.document.write(printHtml);
+    printWindow.document.close();
   };
 
   return (
@@ -108,7 +374,7 @@ export default function BookingModal({ initialPackage, onClose }) {
       <div className="relative w-full max-w-3xl bg-white rounded-3xl shadow-2xl overflow-hidden border border-slate-200 my-6 max-h-[94vh] flex flex-col">
         
         {/* Header */}
-        <div className="px-6 py-5 bg-gradient-to-r from-brand-dark to-brand-navy text-white flex items-center justify-between shrink-0">
+        <div className="px-6 py-5 bg-gradient-to-r from-brand-dark to-brand-navy text-white flex items-center justify-between shrink-0 modal-print-header">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-sky-500/20 border border-sky-400/30 flex items-center justify-center text-sky-400">
               <Calendar className="w-5 h-5" />
@@ -351,7 +617,7 @@ export default function BookingModal({ initialPackage, onClose }) {
             <div id="booking-voucher" className="space-y-6">
               
               {/* Success Banner */}
-              <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-4 flex items-center gap-3 text-emerald-900">
+              <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-4 flex items-center gap-3 text-emerald-900 modal-print-success">
                 <CheckCircle2 className="w-8 h-8 text-emerald-600 shrink-0" />
                 <div>
                   <h4 className="font-bold text-base">Reservation Successful &amp; Saved to Database!</h4>
@@ -362,7 +628,7 @@ export default function BookingModal({ initialPackage, onClose }) {
               </div>
 
               {/* Official Voucher Card */}
-              <div className="border-2 border-dashed border-slate-300 rounded-3xl p-6 bg-slate-50 space-y-6">
+              <div id="printable-voucher" className="border-2 border-dashed border-slate-300 rounded-3xl p-6 bg-slate-50 space-y-6">
                 
                 {/* Brand Header */}
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-200 gap-2">
@@ -442,7 +708,7 @@ export default function BookingModal({ initialPackage, onClose }) {
               </div>
 
               {/* Actions */}
-              <div className="flex flex-col sm:flex-row items-center gap-3">
+              <div className="flex flex-col sm:flex-row items-center gap-3 modal-print-actions">
                 <button
                   onClick={handleShareToWhatsApp}
                   className="w-full sm:flex-1 py-3 px-5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm transition-all flex items-center justify-center gap-2 shadow"
