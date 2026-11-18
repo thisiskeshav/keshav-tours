@@ -39,7 +39,7 @@ export const companyInfo = {
   ]
 };
 
-export const fallbackMountainImage = "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80";
+export const fallbackMountainImage = "https://images.pexels.com/photos/36721863/pexels-photo-36721863.jpeg?auto=compress&cs=tinysrgb&w=800";
 
 export const handleImageError = (e) => {
   if (e && e.currentTarget && e.currentTarget.src !== fallbackMountainImage) {
@@ -54,7 +54,7 @@ export const destinationsData = [
     name: "Manali",
     state: "Himachal Pradesh",
     tagline: "Valley of Gods, Snow Peaks & Solang Adventures",
-    image: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.pexels.com/photos/36721863/pexels-photo-36721863.jpeg?auto=compress&cs=tinysrgb&w=800",
     badge: "Most Popular",
     priceStarting: 5499,
     altitude: "2,050 m (6,726 ft)",
@@ -68,7 +68,7 @@ export const destinationsData = [
     name: "Srinagar & Dal Lake",
     state: "Kashmir",
     tagline: "Paradise on Earth, Floating Houseboats & Shikara",
-    image: "https://images.unsplash.com/photo-1595815771614-ade9d652a65d?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.pexels.com/photos/25786581/pexels-photo-25786581.jpeg?auto=compress&cs=tinysrgb&w=800",
     badge: "Iconic Classic",
     priceStarting: 6999,
     altitude: "1,585 m (5,200 ft)",
@@ -82,7 +82,7 @@ export const destinationsData = [
     name: "Gulmarg",
     state: "Kashmir",
     tagline: "Asia's Premier Ski Hub & Highest Cable Car Gondola",
-    image: "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.pexels.com/photos/35672518/pexels-photo-35672518.jpeg?auto=compress&cs=tinysrgb&w=800",
     badge: "Snow Wonderland",
     priceStarting: 7499,
     altitude: "2,650 m (8,690 ft)",
@@ -96,7 +96,7 @@ export const destinationsData = [
     name: "Shimla & Kufri",
     state: "Himachal Pradesh",
     tagline: "Queen of Hills, Heritage Mall Road & Pine Forests",
-    image: "https://images.unsplash.com/photo-1597074866923-dc0589150358?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.pexels.com/photos/17212387/pexels-photo-17212387.jpeg?auto=compress&cs=tinysrgb&w=800",
     badge: "Heritage Hilltown",
     priceStarting: 4999,
     altitude: "2,276 m (7,467 ft)",
@@ -110,7 +110,7 @@ export const destinationsData = [
     name: "Pahalgam",
     state: "Kashmir",
     tagline: "Valley of Shepherds, Betaab & Aru Valleys",
-    image: "https://images.unsplash.com/photo-1566837945700-30057527ade0?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.pexels.com/photos/13927123/pexels-photo-13927123.jpeg?auto=compress&cs=tinysrgb&w=800",
     badge: "Cinematic Valleys",
     priceStarting: 6499,
     altitude: "2,130 m (6,990 ft)",
@@ -124,7 +124,7 @@ export const destinationsData = [
     name: "Dharamshala & McLeodganj",
     state: "Himachal Pradesh",
     tagline: "Little Lhasa, Tibetan Culture & Dhauladhar Views",
-    image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.pexels.com/photos/5555967/pexels-photo-5555967.jpeg?auto=compress&cs=tinysrgb&w=800",
     badge: "Spiritual & Scenic",
     priceStarting: 5499,
     altitude: "1,457 m - 2,082 m",
@@ -138,7 +138,7 @@ export const destinationsData = [
     name: "Spiti Valley",
     state: "Himachal Pradesh",
     tagline: "The Middle Land, Ancient Monasteries & High Lakes",
-    image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.pexels.com/photos/31346573/pexels-photo-31346573.jpeg?auto=compress&cs=tinysrgb&w=800",
     badge: "Adventure & Offbeat",
     priceStarting: 8999,
     altitude: "3,800 m (12,500 ft)",
@@ -152,7 +152,7 @@ export const destinationsData = [
     name: "Sonamarg",
     state: "Kashmir",
     tagline: "Meadow of Gold & Thajiwas Glacier Wonderland",
-    image: "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.pexels.com/photos/34759939/pexels-photo-34759939.jpeg?auto=compress&cs=tinysrgb&w=800",
     badge: "Glacier Paradise",
     priceStarting: 5999,
     altitude: "2,740 m (8,990 ft)",
@@ -177,7 +177,7 @@ export const packagesData = [
     discount: "31% OFF",
     rating: 4.95,
     reviewsCount: 312,
-    image: "https://images.unsplash.com/photo-1595815771614-ade9d652a65d?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.pexels.com/photos/25786581/pexels-photo-25786581.jpeg?auto=compress&cs=tinysrgb&w=800",
     inclusions: ["3★/4★ Luxury Hotels & Houseboat", "Daily Breakfast & Dinner", "Private Sanitized Sedan/Innova", "1 Hr Shikara Ride Included", "Toll, Parking & Fuel", "24/7 Tour Manager Support"],
     exclusions: ["Airfare / Train tickets", "Gondola tickets (Can be pre-booked)", "Pony rides / Union cab at Pahalgam", "Personal expenses & tips"],
     featured: true,
@@ -233,7 +233,7 @@ export const packagesData = [
     discount: "32% OFF",
     rating: 4.92,
     reviewsCount: 428,
-    image: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.pexels.com/photos/36721863/pexels-photo-36721863.jpeg?auto=compress&cs=tinysrgb&w=800",
     inclusions: ["Deluxe 3★/4★ Valley View Hotels", "Breakfast & Dinner Daily", "Special Candlelight Dinner & Cake", "Private Cab for All Transfers & Sightseeing", "Kullu Shawl Factory & Rafting Stop", "Driver Night Allowances"],
     exclusions: ["Adventure activities tickets", "Rohtang Pass NGT Permit extra", "Lunches & drinks", "Monument entry fees"],
     featured: true,
@@ -284,7 +284,7 @@ export const packagesData = [
     discount: "30% OFF",
     rating: 4.88,
     reviewsCount: 184,
-    image: "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.pexels.com/photos/35672518/pexels-photo-35672518.jpeg?auto=compress&cs=tinysrgb&w=800",
     inclusions: ["Heated Deluxe Hotels with Electric Blankets", "Breakfast & Dinner", "Snow-Chains Equipped Mountain Vehicle", "Gondola Ticket Booking Assistance", "Ski Equipment Rental Discount", "Airport Pick & Drop"],
     exclusions: ["Gondola official pass fee", "Professional ski instructor fee", "Personal warm clothing rentals"],
     featured: true,
@@ -330,7 +330,7 @@ export const packagesData = [
     discount: "33% OFF",
     rating: 4.97,
     reviewsCount: 156,
-    image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.pexels.com/photos/31346573/pexels-photo-31346573.jpeg?auto=compress&cs=tinysrgb&w=800",
     inclusions: ["Sturdy 4x4 / Force Urbania Mountain Vehicle", "Expert Kinnaur/Spiti Driver", "Homestays & Deluxe Swiss Tents at Chandratal", "All Breakfasts & Dinners", "Oxygen Cylinders & First Aid Kit", "Inner Line Passes"],
     exclusions: ["Personal monument entries", "Mineral water bottles & snacks", "Any medical rescue insurance"],
     featured: true,
@@ -391,7 +391,7 @@ export const packagesData = [
     discount: "32% OFF",
     rating: 4.96,
     reviewsCount: 240,
-    image: "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.pexels.com/photos/34759939/pexels-photo-34759939.jpeg?auto=compress&cs=tinysrgb&w=800",
     inclusions: ["4★ Luxury Hotels & Deluxe Heritage Houseboat", "Breakfast & Dinner with Kashmiri delicacies", "Exclusive Toyota Innova Crysta throughout", "Shikara Ride & Welcome Kashmiri Kahwa", "All Tolls, Parking & Inter-state taxes", "Special Welcome Gift Hamper"],
     exclusions: ["Airfare / Train tickets", "Pony rides / local union union cabs", "Personal laundry & gratuities"],
     featured: false,
@@ -452,7 +452,7 @@ export const packagesData = [
     discount: "33% OFF",
     rating: 4.89,
     reviewsCount: 198,
-    image: "https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.pexels.com/photos/2573549/pexels-photo-2573549.jpeg?auto=compress&cs=tinysrgb&w=800",
     inclusions: ["3★/4★ Boutique Mountain Resorts", "Breakfast & Dinner Daily", "Private Sedan or Innova Cab", "Khajjiar Lake Excursion & Kalatop Sanctuary", "Dalai Lama Temple & HPCA Stadium Visit", "Dedicated Driver Guide"],
     exclusions: ["Airfare / Train tickets", "Entry tickets & adventure activities", "Lunches & personal snacks"],
     featured: false,
@@ -582,56 +582,56 @@ export const galleryData = [
     title: "Snow-covered Gulmarg Meadow & Apharwat Peak",
     category: "Kashmir",
     tag: "Snow Wonderland",
-    image: "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=800&q=80"
+    image: "https://images.pexels.com/photos/35672518/pexels-photo-35672518.jpeg?auto=compress&cs=tinysrgb&w=800"
   },
   {
     id: 2,
     title: "Traditional Shikara on Calm Dal Lake Waters",
     category: "Kashmir",
     tag: "Dal Lake Serenity",
-    image: "https://images.unsplash.com/photo-1595815771614-ade9d652a65d?auto=format&fit=crop&w=800&q=80"
+    image: "https://images.pexels.com/photos/25786581/pexels-photo-25786581.jpeg?auto=compress&cs=tinysrgb&w=800"
   },
   {
     id: 3,
     title: "Solang Valley Snow Slopes in Manali",
     category: "Himachal",
     tag: "Alpine Thrills",
-    image: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=800&q=80"
+    image: "https://images.pexels.com/photos/36721863/pexels-photo-36721863.jpeg?auto=compress&cs=tinysrgb&w=800"
   },
   {
     id: 4,
     title: "The Historic Ridge & Christ Church, Shimla",
     category: "Himachal",
     tag: "Colonial Charm",
-    image: "https://images.unsplash.com/photo-1597074866923-dc0589150358?auto=format&fit=crop&w=800&q=80"
+    image: "https://images.pexels.com/photos/17212387/pexels-photo-17212387.jpeg?auto=compress&cs=tinysrgb&w=800"
   },
   {
     id: 5,
     title: "Betaab Valley Pine Forests, Pahalgam",
     category: "Kashmir",
     tag: "Bollywood Valleys",
-    image: "https://images.unsplash.com/photo-1566837945700-30057527ade0?auto=format&fit=crop&w=800&q=80"
+    image: "https://images.pexels.com/photos/13927123/pexels-photo-13927123.jpeg?auto=compress&cs=tinysrgb&w=800"
   },
   {
     id: 6,
-    title: "1000-Year-Old Key Monastery, Spiti Valley",
+    title: "High Altitude Moonscapes, Spiti Valley",
     category: "Himachal",
     tag: "Mystic Monasteries",
-    image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80"
+    image: "https://images.pexels.com/photos/31346573/pexels-photo-31346573.jpeg?auto=compress&cs=tinysrgb&w=800"
   },
   {
     id: 7,
     title: "Pristine Glacial Streams at Sonamarg",
     category: "Kashmir",
     tag: "Glacier Meadows",
-    image: "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=800&q=80"
+    image: "https://images.pexels.com/photos/34759939/pexels-photo-34759939.jpeg?auto=compress&cs=tinysrgb&w=800"
   },
   {
     id: 8,
     title: "Dhauladhar Snow Range over McLeodganj",
     category: "Himachal",
     tag: "High Mountain Horizons",
-    image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80"
+    image: "https://images.pexels.com/photos/5555967/pexels-photo-5555967.jpeg?auto=compress&cs=tinysrgb&w=800"
   }
 ];
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Mountain, Phone, Mail, MapPin, Menu, X, ChevronDown, Compass, Calendar, Search, Sparkles } from 'lucide-react';
 import { companyInfo } from '../data/travelData';
 
-export default function Navbar({ onOpenBooking, onOpenPlanner, onSearch }) {
+export default function Navbar({ currentPage = 'home', onNavigate, onOpenBooking, onOpenPlanner, onSearch }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -27,6 +27,18 @@ export default function Navbar({ onOpenBooking, onOpenPlanner, onSearch }) {
       setShowSearchInput(false);
     }
   };
+
+  const navItems = [
+    { id: 'home', label: 'Home' },
+    { id: 'destinations', label: 'Destinations' },
+    { id: 'packages', label: 'Packages', hasBadge: true },
+    { id: 'about', label: 'About Us' },
+    { id: 'services', label: 'Services' },
+    { id: 'calculator', label: 'Trip Planner' },
+    { id: 'gallery', label: 'Gallery' },
+    { id: 'reviews', label: 'Reviews' },
+    { id: 'contact', label: 'Contact' }
+  ];
 
   return (
     <>
@@ -71,7 +83,10 @@ export default function Navbar({ onOpenBooking, onOpenPlanner, onSearch }) {
           <div className="flex items-center justify-between">
             
             {/* Brand Logo */}
-            <a href="#" className="flex items-center gap-2.5 group">
+            <button 
+              onClick={() => onNavigate('home')} 
+              className="flex items-center gap-2.5 group text-left focus:outline-none"
+            >
               <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-500 via-sky-400 to-amber-400 p-0.5 shadow-md shadow-sky-500/20 group-hover:scale-105 transition-transform">
                 <div className="w-full h-full bg-brand-dark rounded-[10px] flex items-center justify-center">
                   <Mountain className="w-5 h-5 text-sky-400 group-hover:text-amber-400 transition-colors" />
@@ -85,38 +100,35 @@ export default function Navbar({ onOpenBooking, onOpenPlanner, onSearch }) {
                   &amp; Travels &bull; Himalayas
                 </span>
               </div>
-            </a>
+            </button>
 
             {/* Desktop Navigation Links */}
             <nav className="hidden lg:flex items-center space-x-1">
-              <a href="#home" className="text-white hover:text-sky-400 px-3 py-2 text-sm font-medium transition-colors">
-                Home
-              </a>
-              <a href="#destinations" className="text-slate-200 hover:text-sky-400 px-3 py-2 text-sm font-medium transition-colors">
-                Destinations
-              </a>
-              <a href="#packages" className="text-slate-200 hover:text-sky-400 px-3 py-2 text-sm font-medium transition-colors flex items-center gap-1">
-                Packages
-                <span className="px-1.5 py-0.2 bg-amber-500/20 text-amber-300 border border-amber-500/30 rounded text-[10px] font-bold">Offer</span>
-              </a>
-              <a href="#about" className="text-slate-200 hover:text-sky-400 px-3 py-2 text-sm font-medium transition-colors">
-                About Us
-              </a>
-              <a href="#services" className="text-slate-200 hover:text-sky-400 px-3 py-2 text-sm font-medium transition-colors">
-                Services
-              </a>
-              <a href="#calculator" className="text-slate-200 hover:text-sky-400 px-3 py-2 text-sm font-medium transition-colors">
-                Trip Planner
-              </a>
-              <a href="#gallery" className="text-slate-200 hover:text-sky-400 px-3 py-2 text-sm font-medium transition-colors">
-                Gallery
-              </a>
-              <a href="#reviews" className="text-slate-200 hover:text-sky-400 px-3 py-2 text-sm font-medium transition-colors">
-                Reviews
-              </a>
-              <a href="#contact" className="text-slate-200 hover:text-sky-400 px-3 py-2 text-sm font-medium transition-colors">
-                Contact
-              </a>
+              {navItems.map(item => {
+                const isActive = currentPage === item.id;
+                return (
+                  <button
+                    key={item.id}
+                    onClick={() => onNavigate(item.id)}
+                    className={`px-3 py-1.5 text-xs sm:text-sm font-semibold transition-all rounded-full flex items-center gap-1.5 ${
+                      isActive
+                        ? 'bg-sky-500 text-white shadow-md shadow-sky-500/25 font-bold'
+                        : 'text-slate-200 hover:text-white hover:bg-white/10'
+                    }`}
+                  >
+                    <span>{item.label}</span>
+                    {item.hasBadge && (
+                      <span className={`px-1.5 py-0.2 rounded text-[10px] font-bold ${
+                        isActive 
+                          ? 'bg-amber-400 text-slate-950' 
+                          : 'bg-amber-500/20 text-amber-300 border border-amber-500/30'
+                      }`}>
+                        Offer
+                      </span>
+                    )}
+                  </button>
+                );
+              })}
             </nav>
 
             {/* Right CTAs */}
@@ -203,69 +215,30 @@ export default function Navbar({ onOpenBooking, onOpenPlanner, onSearch }) {
               </form>
             </div>
             
-            <a 
-              href="#home" 
-              onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-2 text-base font-medium text-white hover:bg-slate-800 rounded-md"
-            >
-              Home
-            </a>
-            <a 
-              href="#destinations" 
-              onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-2 text-base font-medium text-slate-200 hover:bg-slate-800 rounded-md"
-            >
-              Top Destinations
-            </a>
-            <a 
-              href="#packages" 
-              onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-2 text-base font-medium text-slate-200 hover:bg-slate-800 rounded-md"
-            >
-              Tour Packages
-            </a>
-            <a 
-              href="#about" 
-              onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-2 text-base font-medium text-slate-200 hover:bg-slate-800 rounded-md"
-            >
-              About Keshav Tours
-            </a>
-            <a 
-              href="#services" 
-              onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-2 text-base font-medium text-slate-200 hover:bg-slate-800 rounded-md"
-            >
-              Services Offered
-            </a>
-            <a 
-              href="#calculator" 
-              onClick={() => { setMobileMenuOpen(false); onOpenPlanner(); }}
-              className="block px-3 py-2 text-base font-medium text-slate-200 hover:bg-slate-800 rounded-md"
-            >
-              Interactive Cost Calculator
-            </a>
-            <a 
-              href="#gallery" 
-              onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-2 text-base font-medium text-slate-200 hover:bg-slate-800 rounded-md"
-            >
-              Photo Gallery
-            </a>
-            <a 
-              href="#reviews" 
-              onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-2 text-base font-medium text-slate-200 hover:bg-slate-800 rounded-md"
-            >
-              Reviews &amp; Testimonials
-            </a>
-            <a 
-              href="#contact" 
-              onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-2 text-base font-medium text-slate-200 hover:bg-slate-800 rounded-md"
-            >
-              Contact Us
-            </a>
+            {navItems.map(item => {
+              const isActive = currentPage === item.id;
+              return (
+                <button
+                  key={item.id}
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    onNavigate(item.id);
+                  }}
+                  className={`w-full text-left px-3 py-2 text-base font-medium rounded-md transition-colors flex items-center justify-between ${
+                    isActive
+                      ? 'bg-sky-500 text-white font-bold'
+                      : 'text-slate-200 hover:bg-slate-800'
+                  }`}
+                >
+                  <span>{item.label}</span>
+                  {item.hasBadge && (
+                    <span className="px-1.5 py-0.5 rounded text-[10px] font-bold bg-amber-400 text-slate-950">
+                      Offer
+                    </span>
+                  )}
+                </button>
+              );
+            })}
 
             <div className="pt-4 border-t border-slate-800 flex flex-col gap-2.5">
               <button

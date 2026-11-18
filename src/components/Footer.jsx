@@ -3,7 +3,7 @@ import { Mountain, Phone, Mail, MapPin, Send, Heart, ShieldCheck, CheckCircle2 }
 import { companyInfo } from '../data/travelData';
 import { saveNewsletterSubscriber } from '../supabaseClient';
 
-export default function Footer({ onOpenBooking, onFilterByState }) {
+export default function Footer({ onNavigate, onOpenBooking, onFilterByState }) {
   const [newsletterEmail, setNewsletterEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -20,6 +20,11 @@ export default function Footer({ onOpenBooking, onFilterByState }) {
     }
   };
 
+  const handleDestinationClick = (state) => {
+    if (onFilterByState) onFilterByState(state);
+    if (onNavigate) onNavigate('destinations');
+  };
+
   return (
     <footer className="bg-brand-dark text-slate-400 border-t border-slate-800 text-xs">
       
@@ -29,7 +34,7 @@ export default function Footer({ onOpenBooking, onFilterByState }) {
           
           {/* Brand Info (2 Columns on large screens) */}
           <div className="lg:col-span-2 space-y-4">
-            <a href="#" className="flex items-center gap-2.5">
+            <button onClick={() => onNavigate && onNavigate('home')} className="flex items-center gap-2.5 text-left focus:outline-none">
               <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-500 to-amber-400 p-0.5 shadow-md">
                 <div className="w-full h-full bg-brand-dark rounded-[10px] flex items-center justify-center">
                   <Mountain className="w-5 h-5 text-sky-400" />
@@ -43,7 +48,7 @@ export default function Footer({ onOpenBooking, onFilterByState }) {
                   &amp; Travels &bull; Himalayas
                 </span>
               </div>
-            </a>
+            </button>
 
             <p className="text-slate-400 leading-relaxed max-w-sm">
               North India's premier mountain tour specialists. Providing handcrafted, safe, and unforgettable holiday packages across Himachal Pradesh, Kashmir, and Leh Ladakh.
@@ -67,13 +72,15 @@ export default function Footer({ onOpenBooking, onFilterByState }) {
               Quick Links
             </h4>
             <ul className="space-y-2">
-              <li><a href="#home" className="hover:text-sky-400 transition-colors">Home</a></li>
-              <li><a href="#destinations" className="hover:text-sky-400 transition-colors">Top Destinations</a></li>
-              <li><a href="#packages" className="hover:text-sky-400 transition-colors">Tour Packages</a></li>
-              <li><a href="#services" className="hover:text-sky-400 transition-colors">Services Offered</a></li>
-              <li><a href="#calculator" className="hover:text-sky-400 transition-colors">Trip Cost Calculator</a></li>
-              <li><a href="#gallery" className="hover:text-sky-400 transition-colors">Himalayan Gallery</a></li>
-              <li><a href="#reviews" className="hover:text-sky-400 transition-colors">Traveler Reviews</a></li>
+              <li><button onClick={() => onNavigate && onNavigate('home')} className="hover:text-sky-400 transition-colors">Home</button></li>
+              <li><button onClick={() => onNavigate && onNavigate('destinations')} className="hover:text-sky-400 transition-colors">Top Destinations</button></li>
+              <li><button onClick={() => onNavigate && onNavigate('packages')} className="hover:text-sky-400 transition-colors">Tour Packages</button></li>
+              <li><button onClick={() => onNavigate && onNavigate('about')} className="hover:text-sky-400 transition-colors">About Keshav Tours</button></li>
+              <li><button onClick={() => onNavigate && onNavigate('services')} className="hover:text-sky-400 transition-colors">Services Offered</button></li>
+              <li><button onClick={() => onNavigate && onNavigate('calculator')} className="hover:text-sky-400 transition-colors">Trip Cost Calculator</button></li>
+              <li><button onClick={() => onNavigate && onNavigate('gallery')} className="hover:text-sky-400 transition-colors">Himalayan Gallery</button></li>
+              <li><button onClick={() => onNavigate && onNavigate('reviews')} className="hover:text-sky-400 transition-colors">Traveler Reviews</button></li>
+              <li><button onClick={() => onNavigate && onNavigate('contact')} className="hover:text-sky-400 transition-colors">Contact Us</button></li>
             </ul>
           </div>
 
@@ -84,37 +91,37 @@ export default function Footer({ onOpenBooking, onFilterByState }) {
             </h4>
             <ul className="space-y-2">
               <li>
-                <button onClick={() => onFilterByState('Himachal Pradesh')} className="hover:text-sky-400 text-left transition-colors">
+                <button onClick={() => handleDestinationClick('Himachal Pradesh')} className="hover:text-sky-400 text-left transition-colors">
                   Manali &amp; Solang Valley
                 </button>
               </li>
               <li>
-                <button onClick={() => onFilterByState('Himachal Pradesh')} className="hover:text-sky-400 text-left transition-colors">
+                <button onClick={() => handleDestinationClick('Himachal Pradesh')} className="hover:text-sky-400 text-left transition-colors">
                   Shimla &amp; Kufri Hills
                 </button>
               </li>
               <li>
-                <button onClick={() => onFilterByState('Kashmir')} className="hover:text-sky-400 text-left transition-colors">
+                <button onClick={() => handleDestinationClick('Kashmir')} className="hover:text-sky-400 text-left transition-colors">
                   Srinagar &amp; Dal Lake
                 </button>
               </li>
               <li>
-                <button onClick={() => onFilterByState('Kashmir')} className="hover:text-sky-400 text-left transition-colors">
+                <button onClick={() => handleDestinationClick('Kashmir')} className="hover:text-sky-400 text-left transition-colors">
                   Gulmarg Gondola &amp; Skiing
                 </button>
               </li>
               <li>
-                <button onClick={() => onFilterByState('Kashmir')} className="hover:text-sky-400 text-left transition-colors">
+                <button onClick={() => handleDestinationClick('Kashmir')} className="hover:text-sky-400 text-left transition-colors">
                   Pahalgam &amp; Betaab Valley
                 </button>
               </li>
               <li>
-                <button onClick={() => onFilterByState('Himachal Pradesh')} className="hover:text-sky-400 text-left transition-colors">
+                <button onClick={() => handleDestinationClick('Himachal Pradesh')} className="hover:text-sky-400 text-left transition-colors">
                   Spiti Valley Road Trip
                 </button>
               </li>
               <li>
-                <button onClick={() => onFilterByState('Himachal Pradesh')} className="hover:text-sky-400 text-left transition-colors">
+                <button onClick={() => handleDestinationClick('Himachal Pradesh')} className="hover:text-sky-400 text-left transition-colors">
                   Dharamshala &amp; McLeodganj
                 </button>
               </li>

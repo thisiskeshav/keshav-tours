@@ -11,7 +11,7 @@ export default function Hero({ onExploreTours, onOpenBooking }) {
         {/* Background Mountain Panorama Image with Gradient Overlays */}
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=2000&q=85"
+            src="https://images.pexels.com/photos/25786581/pexels-photo-25786581.jpeg?auto=compress&cs=tinysrgb&w=1800"
             alt="Majestic Kashmir & Himachal Himalayan Mountain Landscape"
             onError={handleImageError}
             className="w-full h-full object-cover object-center scale-105 transition-transform duration-1000"

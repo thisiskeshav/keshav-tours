@@ -16,7 +16,7 @@ export default function AboutSection({ onOpenBooking }) {
               {/* Main Traveler Image (Framed like the reference image) */}
               <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-slate-100 aspect-[4/5]">
                 <img
-                  src="https://images.unsplash.com/photo-1566837945700-30057527ade0?auto=format&fit=crop&w=1000&q=80"
+                  src="https://images.pexels.com/photos/13927123/pexels-photo-13927123.jpeg?auto=compress&cs=tinysrgb&w=1000"
                   alt="Traveler exploring scenic Pahalgam & Manali mountains"
                   onError={handleImageError}
                   className="w-full h-full object-cover"
