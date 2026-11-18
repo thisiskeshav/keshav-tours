@@ -5,8 +5,8 @@ export const companyInfo = {
   phone: "+91 7838963590",
   whatsapp: "+91 7838963590",
   whatsappUrl: "https://wa.me/917838963590?text=Hello%20Keshav%20Tours%2C%20I%20would%20like%20to%20inquire%20about%20a%20mountain%20travel%20package.",
-  email: "bookings@keshavtours.com",
-  supportEmail: "info@keshavtours.com",
+  email: "keshavsharmaj33@gmail.com",
+  supportEmail: "keshavsharmaj33@gmail.com",
   offices: [
     {
       city: "Shimla (Himachal Head Office)",

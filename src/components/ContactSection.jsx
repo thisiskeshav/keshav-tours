@@ -101,6 +101,28 @@ export default function ContactSection({ onOpenBooking }) {
                 </p>
               </div>
 
+              {/* Direct Support Email & Phone Banner */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <a href={`mailto:${companyInfo.email}`} className="bg-white p-4 rounded-2xl border border-slate-200/90 shadow-sm flex items-center gap-3 hover:border-sky-400 transition-colors group">
+                  <div className="w-10 h-10 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center shrink-0 border border-sky-100 group-hover:bg-sky-500 group-hover:text-white transition-colors">
+                    <Mail className="w-5 h-5" />
+                  </div>
+                  <div className="text-xs min-w-0">
+                    <p className="text-slate-500 font-medium">Email Support</p>
+                    <p className="font-bold text-slate-900 group-hover:text-sky-600 truncate">{companyInfo.email}</p>
+                  </div>
+                </a>
+                <a href={`tel:${companyInfo.phone}`} className="bg-white p-4 rounded-2xl border border-slate-200/90 shadow-sm flex items-center gap-3 hover:border-sky-400 transition-colors group">
+                  <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 border border-emerald-100 group-hover:bg-emerald-500 group-hover:text-white transition-colors">
+                    <Phone className="w-5 h-5" />
+                  </div>
+                  <div className="text-xs min-w-0">
+                    <p className="text-slate-500 font-medium">24/7 Helpline</p>
+                    <p className="font-bold text-slate-900 group-hover:text-emerald-600 truncate">{companyInfo.phone}</p>
+                  </div>
+                </a>
+              </div>
+
               {/* Office Locations Grid */}
               <div className="space-y-3">
                 {companyInfo.offices.map((office, idx) => (

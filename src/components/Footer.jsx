@@ -166,11 +166,11 @@ export default function Footer({ onNavigate, onOpenBooking, onFilterByState }) {
             <div className="pt-2 text-xs text-slate-400 space-y-1">
               <p className="flex items-center gap-1 text-slate-300">
                 <Phone className="w-3.5 h-3.5 text-sky-400" />
-                <span>{companyInfo.phone}</span>
+                <a href={`tel:${companyInfo.phone}`} className="hover:text-sky-400 transition-colors">{companyInfo.phone}</a>
               </p>
               <p className="flex items-center gap-1 text-slate-300">
                 <Mail className="w-3.5 h-3.5 text-sky-400" />
-                <span>{companyInfo.email}</span>
+                <a href={`mailto:${companyInfo.email}`} className="hover:text-sky-400 transition-colors">{companyInfo.email}</a>
               </p>
             </div>
           </div>
